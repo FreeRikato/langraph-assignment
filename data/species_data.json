@@ -1,0 +1,217 @@
+{
+  "javan rhino": {
+    "scientific_name": "Rhinoceros sondaicus",
+    "population": 76,
+    "status": "Critically Endangered",
+    "location": "Ujung Kulon National Park, Indonesia",
+    "threats": [
+      "Poaching",
+      "Habitat Loss",
+      "Disease",
+      "Inbreeding",
+      "Natural Disasters"
+    ],
+    "migration": "Non-migratory",
+    "funding_received": 1500000,
+    "funding_needed": 5000000,
+    "population_trend": "Stable",
+    "recovery_probability": 0.15,
+    "historical_data": {
+      "2010": 60,
+      "2015": 68,
+      "2020": 72
+    }
+  },
+  "sumatran rhino": {
+    "scientific_name": "Dicerorhinus sumatrensis",
+    "population": 34,
+    "status": "Critically Endangered",
+    "location": "Sumatra and Borneo, Indonesia",
+    "threats": [
+      "Poaching",
+      "Habitat Loss",
+      "Low Population Density"
+    ],
+    "migration": "Non-migratory",
+    "funding_received": 800000,
+    "funding_needed": 4000000,
+    "population_trend": "Declining",
+    "recovery_probability": 0.08,
+    "historical_data": {
+      "2010": 50,
+      "2015": 42,
+      "2020": 38
+    }
+  },
+  "black rhino": {
+    "scientific_name": "Diceros bicornis",
+    "population": 6195,
+    "status": "Critically Endangered",
+    "location": "Eastern and Southern Africa",
+    "threats": [
+      "Poaching",
+      "Habitat Loss",
+      "Human-Wildlife Conflict"
+    ],
+    "migration": "Seasonal local movements",
+    "funding_received": 8000000,
+    "funding_needed": 12000000,
+    "population_trend": "Increasing",
+    "recovery_probability": 0.45,
+    "historical_data": {
+      "2010": 4880,
+      "2015": 5450,
+      "2020": 5630
+    }
+  },
+  "african elephant": {
+    "scientific_name": "Loxodonta africana",
+    "population": 415000,
+    "status": "Vulnerable",
+    "location": "Sub-Saharan Africa",
+    "threats": [
+      "Poaching",
+      "Human-Wildlife Conflict",
+      "Habitat Fragmentation",
+      "Climate Change"
+    ],
+    "migration": "Long-distance seasonal migration",
+    "funding_received": 12000000,
+    "funding_needed": 25000000,
+    "population_trend": "Stable",
+    "recovery_probability": 0.6,
+    "historical_data": {
+      "2010": 410000,
+      "2015": 415000,
+      "2020": 413000
+    }
+  },
+  "giant panda": {
+    "scientific_name": "Ailuropoda melanoleuca",
+    "population": 1864,
+    "status": "Vulnerable",
+    "location": "China",
+    "threats": [
+      "Habitat Loss",
+      "Low Reproduction Rates",
+      "Climate Change"
+    ],
+    "migration": "Short-distance vertical migration",
+    "funding_received": 5000000,
+    "funding_needed": 8000000,
+    "population_trend": "Increasing",
+    "recovery_probability": 0.75,
+    "historical_data": {
+      "2010": 1600,
+      "2015": 1864,
+      "2020": 1864
+    }
+  },
+  "wildebeest": {
+    "scientific_name": "Connochaetes taurinus",
+    "population": 1500000,
+    "status": "Least Concern",
+    "location": "Eastern and Southern Africa",
+    "threats": [
+      "Habitat Loss",
+      "Human-Wildlife Conflict",
+      "Climate Change"
+    ],
+    "migration": "Long-distance seasonal migration (Serengeti-Mara ecosystem)",
+    "funding_received": 2000000,
+    "funding_needed": 5000000,
+    "population_trend": "Stable",
+    "recovery_probability": 0.85,
+    "historical_data": {
+      "2010": 1400000,
+      "2015": 1450000,
+      "2020": 1500000
+    }
+  },
+  "humpback whale": {
+    "scientific_name": "Megaptera novaeangliae",
+    "population": 84000,
+    "status": "Least Concern",
+    "location": "Global oceans",
+    "threats": [
+      "Ship Strikes",
+      "Entanglement",
+      "Climate Change",
+      "Noise Pollution"
+    ],
+    "migration": "Long-distance seasonal migration (feeding to breeding grounds)",
+    "funding_received": 3500000,
+    "funding_needed": 6000000,
+    "population_trend": "Increasing",
+    "recovery_probability": 0.9,
+    "historical_data": {
+      "2010": 70000,
+      "2015": 78000,
+      "2020": 81000
+    }
+  },
+  "arabian oryx": {
+    "scientific_name": "Oryx leucoryx",
+    "population": 1200,
+    "status": "Vulnerable",
+    "location": "Arabian Peninsula",
+    "threats": [
+      "Habitat Loss",
+      "Climate Change",
+      "Poaching"
+    ],
+    "migration": "Nomadic movements following rainfall",
+    "funding_received": 1800000,
+    "funding_needed": 3000000,
+    "population_trend": "Increasing",
+    "recovery_probability": 0.8,
+    "historical_data": {
+      "2010": 1000,
+      "2015": 1100,
+      "2020": 1150
+    }
+  },
+  "snow leopard": {
+    "scientific_name": "Panthera uncia",
+    "population": 6390,
+    "status": "Vulnerable",
+    "location": "Central and South Asia mountains",
+    "threats": [
+      "Poaching",
+      "Habitat Loss",
+      "Human-Wildlife Conflict",
+      "Climate Change"
+    ],
+    "migration": "Altitudinal migration following prey",
+    "funding_received": 4200000,
+    "funding_needed": 10000000,
+    "population_trend": "Stable",
+    "recovery_probability": 0.55,
+    "historical_data": {
+      "2010": 6000,
+      "2015": 6200,
+      "2020": 6300
+    }
+  },
+  "vaquita": {
+    "scientific_name": "Phocoena sinus",
+    "population": 10,
+    "status": "Critically Endangered",
+    "location": "Gulf of California, Mexico",
+    "threats": [
+      "Bycatch",
+      "Habitat Loss",
+      "Pollution"
+    ],
+    "migration": "Non-migratory",
+    "funding_received": 500000,
+    "funding_needed": 10000000,
+    "population_trend": "Declining",
+    "recovery_probability": 0.01,
+    "historical_data": {
+      "2010": 200,
+      "2015": 60,
+      "2020": 30
+    }
+  }
+}
