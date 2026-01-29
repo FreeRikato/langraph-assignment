@@ -20,7 +20,7 @@ from sklearn.linear_model import LinearRegression
 from duckduckgo_search import DDGS
 
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 
 
@@ -76,9 +76,17 @@ def predict_and_visualize_population(
             "trend": "Unknown"
         }
 
-    # Prepare data
-    years = np.array(list(historical_data.keys())).reshape(-1, 1)
-    counts = np.array(list(historical_data.values()))
+    # Prepare data - convert string keys to integers (JSON keys are always strings)
+    try:
+        years = np.array([int(k) for k in historical_data.keys()]).reshape(-1, 1)
+        counts = np.array([float(v) for v in historical_data.values()])
+    except (ValueError, TypeError) as e:
+        return {
+            "error": f"Invalid data format for prediction: {e}",
+            "forecast": {},
+            "chart_base64": "",
+            "trend": "Unknown"
+        }
 
     # Train ML model (Linear Regression)
     model = LinearRegression()

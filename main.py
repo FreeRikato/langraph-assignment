@@ -59,9 +59,9 @@ def run_agent(
         print("=" * 60)
 
     # Initialize the state with bonus fields
+    # Note: conversation_history is omitted - let checkpointer load and accumulate it
     initial_state: ConservationAgentState = {
         "query": query,
-        "conversation_history": [],
         "intent": "",
         "entities": [],
         "retrieved_data": {},
@@ -76,7 +76,10 @@ def run_agent(
     }
 
     # Run the graph with optional thread_id for persistent memory
-    config = {"configurable": {"thread_id": thread_id}} if thread_id else {}
+    # MemorySaver checkpointer requires thread_id, so generate one if not provided
+    if thread_id is None:
+        thread_id = str(uuid.uuid4())
+    config = {"configurable": {"thread_id": thread_id}}
     result = app.invoke(initial_state, config=config)
 
     # Append to fine-tuning dataset (Challenge 6)
@@ -114,9 +117,9 @@ def run_agent_streaming(
     print("=" * 60 + "\n")
 
     # Initialize the state
+    # Note: conversation_history is omitted - let checkpointer load and accumulate it
     initial_state: ConservationAgentState = {
         "query": query,
-        "conversation_history": [],
         "intent": "",
         "entities": [],
         "retrieved_data": {},

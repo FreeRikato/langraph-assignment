@@ -38,9 +38,19 @@ def query_processing_node(state: ConservationAgentState) -> ConservationAgentSta
         Updated state with intent, entities, language, and iteration_count set.
     """
     query = state["query"]
+    conversation_history = state.get("conversation_history", [])
 
-    prompt = ChatPromptTemplate.from_template(
-        """Analyze this conservation query: "{query}"
+    # Build context from conversation history for better entity resolution
+    context_info = ""
+    if conversation_history:
+        recent_history = conversation_history[-3:]  # Last 3 turns for context
+        context_info = "\n\nRecent conversation for context:\n" + "\n".join([
+            f"Q: {h['query']}\nA: {h['response'][:150]}..."
+            for h in recent_history
+        ])
+
+    prompt_template = ChatPromptTemplate.from_template(
+        """Analyze this conservation query: "{query}"{context_info}
 
         Classify the intent, extract entities, and detect the language.
         Return ONLY a valid JSON object with this exact format:
@@ -60,14 +70,15 @@ def query_processing_node(state: ConservationAgentState) -> ConservationAgentSta
         - general_chat: General conversation, greetings, or unclear queries
 
         Extract specific species names (e.g., "Javan Rhino", "Giant Panda"), regions, or groups mentioned.
+        Use the conversation context to resolve pronouns like "it", "they", "where" to the correct entity.
         Detect the language of the query (default to English if unsure).
         """
     )
 
-    chain = prompt | llm
+    chain = prompt_template | llm
 
     try:
-        response = chain.invoke({"query": query})
+        response = chain.invoke({"query": query, "context_info": context_info})
         content = response.content.strip()
 
         # Clean up JSON response (remove markdown code blocks)
@@ -375,6 +386,16 @@ def response_generation_node(state: ConservationAgentState) -> ConservationAgent
     analysis = state.get("analysis_result", "")
     language = state.get("language", "English")
     visualization_data = state.get("visualization_data", "")
+    conversation_history = state.get("conversation_history", [])
+
+    # Build conversation context for response generation
+    conversation_context = ""
+    if conversation_history:
+        recent_history = conversation_history[-5:]  # Last 5 turns
+        conversation_context = "\n\nPrevious conversation:\n" + "\n".join([
+            f"Q: {h['query']}\nA: {h['response'][:200]}..."
+            for h in recent_history
+        ])
 
     # Build visualization indicator
     viz_note = ""
@@ -383,7 +404,7 @@ def response_generation_node(state: ConservationAgentState) -> ConservationAgent
 
     prompt = f"""Format the following conservation analysis into a professional, user-friendly response.
 
-Analysis: {analysis}
+Analysis: {analysis}{conversation_context}
 
 Target Language: {language} (Translate your response to this language if it's not English)
 
@@ -394,6 +415,7 @@ Guidelines:
 - Include actionable recommendations when relevant
 - Use bullet points for lists
 - If the language is not English, provide the full response in that language{viz_note}
+- IMPORTANT: If the user shared personal information (name, preferences) in previous conversation, remember and acknowledge it appropriately
 
 Output the formatted response directly, without introductory text.
 """

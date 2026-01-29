@@ -1,8 +1,8 @@
 """Configuration module for the conservation agent."""
 
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 
 # Load environment variables
@@ -18,7 +18,7 @@ def get_groq_api_key() -> str:
 
 
 # LLM Configuration
-LLM_MODEL = "llama3-70b-8192"  # Llama 3 70B for good speed/intelligence balance
+LLM_MODEL = "llama-3.3-70b-versatile"  # Llama 3 70B for good speed/intelligence balance
 LLM_TEMPERATURE = 0.0  # Deterministic for consistent JSON parsing
 
 # Initialize the ChatGroq model
